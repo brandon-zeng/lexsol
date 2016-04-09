@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="PostgreSQL - lexsol@localhost" uuid="533118e4-a99e-4cec-b187-3f6308efcd11">
+    <database-info product="PostgreSQL" version="9.5.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <schema name="public" catalog="lexsol"/>
+    <table name="note" schema="public" catalog="lexsol" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="site_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="notetype_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="property_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sitevisit_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="notedate" sqlType="timestamptz" precision="35" scale="6" nullable="false" jdbcType="93"/>
+      <column name="secondarydate" sqlType="timestamptz" precision="35" scale="6" nullable="true" jdbcType="93"/>
+      <column name="note" sqlType="text" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="createddate" sqlType="timestamptz" precision="35" scale="6" nullable="false" jdbcType="93"/>
+      <column name="createdby" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="lastmodifieddate" sqlType="timestamptz" precision="35" scale="6" nullable="true" jdbcType="93"/>
+      <column name="secondarydatechangedby_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="secondarydatechangedate" sqlType="timestamptz" precision="35" scale="6" nullable="true" jdbcType="93"/>
+      <column name="dealissues" sqlType="jsonb" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
+      <column name="discussionpoints" sqlType="jsonb" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
+      <primary-key name="note_pkey" columns="id"/>
+      <foreign-key name="note_notetype_id_fkey" columns="notetype_id" ref-table="notetype" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="note_site_id_fkey" columns="site_id" ref-table="site" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="notetype" schema="public" catalog="lexsol" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="site_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="secondarydate" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="sitevisit_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="showdealissues" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="deletepermittedinterval" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
+      <column name="discussiontopics" sqlType="jsonb" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
+      <primary-key name="notetype_pkey" columns="id"/>
+      <foreign-key name="notetype_site_id_fkey" columns="site_id" ref-table="site" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="note_notetype_id_fkey" table="note" schema="public" catalog="lexsol" columns="notetype_id"/>
+    </table>
+    <table name="site" schema="public" catalog="lexsol" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="public_key" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="site_pkey" columns="id"/>
+      <exported-key name="note_site_id_fkey" table="note" schema="public" catalog="lexsol" columns="site_id"/>
+      <exported-key name="notetype_site_id_fkey" table="notetype" schema="public" catalog="lexsol" columns="site_id"/>
+    </table>
+  </data-source>
+</component>

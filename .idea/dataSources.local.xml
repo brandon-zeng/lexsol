@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - lexsol@localhost" uuid="533118e4-a99e-4cec-b187-3f6308efcd11">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>lexsol.public</schema-pattern>
+    </data-source>
+  </component>
+</project>
