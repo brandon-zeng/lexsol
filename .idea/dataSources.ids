@@ -8,7 +8,7 @@
     <schema name="public" catalog="lexsol"/>
     <table name="note" schema="public" catalog="lexsol" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
-      <column name="site_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tenant_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="notetype_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="property_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="sitevisit_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
@@ -24,27 +24,42 @@
       <column name="discussionpoints" sqlType="jsonb" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
       <primary-key name="note_pkey" columns="id"/>
       <foreign-key name="note_notetype_id_fkey" columns="notetype_id" ref-table="notetype" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="note_site_id_fkey" columns="site_id" ref-table="site" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="note_tenant_id_fkey" columns="tenant_id" ref-table="tenant" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
     <table name="notetype" schema="public" catalog="lexsol" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
-      <column name="site_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="tenant_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="secondarydate" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="sitevisit_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="showdealissues" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="deletepermittedinterval" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <column name="discussiontopics" sqlType="jsonb" precision="2147483647" scale="0" nullable="true" jdbcType="1111"/>
+      <column name="foo" sqlType="varchar" precision="30" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="notetype_pkey" columns="id"/>
-      <foreign-key name="notetype_site_id_fkey" columns="site_id" ref-table="site" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="notetype_tenant_id_fkey" columns="tenant_id" ref-table="tenant" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="note_notetype_id_fkey" table="note" schema="public" catalog="lexsol" columns="notetype_id"/>
     </table>
-    <table name="site" schema="public" catalog="lexsol" type="TABLE">
+    <table name="schema_version" schema="public" catalog="lexsol" type="TABLE">
+      <column name="installed_rank" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="version" sqlType="varchar" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="200" scale="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="script" sqlType="varchar" precision="1000" scale="0" nullable="false" jdbcType="12"/>
+      <column name="checksum" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="installed_by" sqlType="varchar" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="installed_on" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93" def="bm93KCk="/>
+      <column name="execution_time" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="success" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="schema_version_pk" columns="installed_rank"/>
+      <index name="schema_version_s_idx" unique="false" columns="success"/>
+    </table>
+    <table name="tenant" schema="public" catalog="lexsol" type="TABLE">
       <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="public_key" sqlType="text" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
-      <primary-key name="site_pkey" columns="id"/>
-      <exported-key name="note_site_id_fkey" table="note" schema="public" catalog="lexsol" columns="site_id"/>
-      <exported-key name="notetype_site_id_fkey" table="notetype" schema="public" catalog="lexsol" columns="site_id"/>
+      <primary-key name="tenant_pkey" columns="id"/>
+      <exported-key name="note_tenant_id_fkey" table="note" schema="public" catalog="lexsol" columns="tenant_id"/>
+      <exported-key name="notetype_tenant_id_fkey" table="notetype" schema="public" catalog="lexsol" columns="tenant_id"/>
     </table>
   </data-source>
 </component>

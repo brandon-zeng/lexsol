@@ -6,6 +6,7 @@ package com.example.model;
 
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
+import com.example.model.tables.SchemaVersion;
 import com.example.model.tables.Tenant;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-	private static final long serialVersionUID = -1494657379;
+	private static final long serialVersionUID = -1769234383;
 
 	/**
 	 * The reference instance of <code>public</code>
@@ -56,6 +57,7 @@ public class Public extends SchemaImpl {
 		return Arrays.<Table<?>>asList(
 			Note.NOTE,
 			Notetype.NOTETYPE,
+			SchemaVersion.SCHEMA_VERSION,
 			Tenant.TENANT);
 	}
 }

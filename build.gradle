@@ -18,6 +18,10 @@ buildscript {
 	}
 }
 
+plugins {
+    id "org.flywaydb.flyway" version "4.0"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -34,6 +38,11 @@ repositories {
 	mavenCentral()
 }
 
+flyway {
+    url = 'jdbc:postgresql://localhost:5432/lexsol'
+    user = 'postgres'
+    password = 'postgres'
+}
 
 dependencies {
     compile("org.springframework:spring-jdbc")

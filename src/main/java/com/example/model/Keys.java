@@ -6,9 +6,11 @@ package com.example.model;
 
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
+import com.example.model.tables.SchemaVersion;
 import com.example.model.tables.Tenant;
 import com.example.model.tables.records.NoteRecord;
 import com.example.model.tables.records.NotetypeRecord;
+import com.example.model.tables.records.SchemaVersionRecord;
 import com.example.model.tables.records.TenantRecord;
 
 import javax.annotation.Generated;
@@ -43,6 +45,7 @@ public class Keys {
 
 	public static final UniqueKey<NoteRecord> NOTE_PKEY = UniqueKeys0.NOTE_PKEY;
 	public static final UniqueKey<NotetypeRecord> NOTETYPE_PKEY = UniqueKeys0.NOTETYPE_PKEY;
+	public static final UniqueKey<SchemaVersionRecord> SCHEMA_VERSION_PK = UniqueKeys0.SCHEMA_VERSION_PK;
 	public static final UniqueKey<TenantRecord> TENANT_PKEY = UniqueKeys0.TENANT_PKEY;
 
 	// -------------------------------------------------------------------------
@@ -60,6 +63,7 @@ public class Keys {
 	private static class UniqueKeys0 extends AbstractKeys {
 		public static final UniqueKey<NoteRecord> NOTE_PKEY = createUniqueKey(Note.NOTE, Note.NOTE.ID);
 		public static final UniqueKey<NotetypeRecord> NOTETYPE_PKEY = createUniqueKey(Notetype.NOTETYPE, Notetype.NOTETYPE.ID);
+		public static final UniqueKey<SchemaVersionRecord> SCHEMA_VERSION_PK = createUniqueKey(SchemaVersion.SCHEMA_VERSION, SchemaVersion.SCHEMA_VERSION.INSTALLED_RANK);
 		public static final UniqueKey<TenantRecord> TENANT_PKEY = createUniqueKey(Tenant.TENANT, Tenant.TENANT.ID);
 	}
 

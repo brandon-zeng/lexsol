@@ -6,6 +6,7 @@ package com.example.model;
 
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
+import com.example.model.tables.SchemaVersion;
 import com.example.model.tables.Tenant;
 
 import javax.annotation.Generated;
@@ -33,6 +34,11 @@ public class Tables {
 	 * The table public.notetype
 	 */
 	public static final Notetype NOTETYPE = com.example.model.tables.Notetype.NOTETYPE;
+
+	/**
+	 * The table public.schema_version
+	 */
+	public static final SchemaVersion SCHEMA_VERSION = com.example.model.tables.SchemaVersion.SCHEMA_VERSION;
 
 	/**
 	 * The table public.tenant
