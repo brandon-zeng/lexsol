@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.model.tables.records.TenantRecord;
+
 /**
  * Created by vagrant on 4/8/16.
  */
@@ -26,6 +28,13 @@ public class TenantData {
     public static TenantData from(int id){
         TenantData data = new TenantData();
         data.setId(id);
+        return data;
+    }
+
+    public static TenantData from(TenantRecord record) {
+        TenantData data = new TenantData();
+        data.setId(record.getId());
+        data.setPublic_key(record.getPublicKey());
         return data;
     }
 }
