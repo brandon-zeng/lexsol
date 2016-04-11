@@ -6,10 +6,10 @@ package com.example.model;
 
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
-import com.example.model.tables.Site;
+import com.example.model.tables.Tenant;
 import com.example.model.tables.records.NoteRecord;
 import com.example.model.tables.records.NotetypeRecord;
-import com.example.model.tables.records.SiteRecord;
+import com.example.model.tables.records.TenantRecord;
 
 import javax.annotation.Generated;
 
@@ -43,15 +43,15 @@ public class Keys {
 
 	public static final UniqueKey<NoteRecord> NOTE_PKEY = UniqueKeys0.NOTE_PKEY;
 	public static final UniqueKey<NotetypeRecord> NOTETYPE_PKEY = UniqueKeys0.NOTETYPE_PKEY;
-	public static final UniqueKey<SiteRecord> SITE_PKEY = UniqueKeys0.SITE_PKEY;
+	public static final UniqueKey<TenantRecord> TENANT_PKEY = UniqueKeys0.TENANT_PKEY;
 
 	// -------------------------------------------------------------------------
 	// FOREIGN KEY definitions
 	// -------------------------------------------------------------------------
 
-	public static final ForeignKey<NoteRecord, SiteRecord> NOTE__NOTE_SITE_ID_FKEY = ForeignKeys0.NOTE__NOTE_SITE_ID_FKEY;
+	public static final ForeignKey<NoteRecord, TenantRecord> NOTE__NOTE_TENANT_ID_FKEY = ForeignKeys0.NOTE__NOTE_TENANT_ID_FKEY;
 	public static final ForeignKey<NoteRecord, NotetypeRecord> NOTE__NOTE_NOTETYPE_ID_FKEY = ForeignKeys0.NOTE__NOTE_NOTETYPE_ID_FKEY;
-	public static final ForeignKey<NotetypeRecord, SiteRecord> NOTETYPE__NOTETYPE_SITE_ID_FKEY = ForeignKeys0.NOTETYPE__NOTETYPE_SITE_ID_FKEY;
+	public static final ForeignKey<NotetypeRecord, TenantRecord> NOTETYPE__NOTETYPE_TENANT_ID_FKEY = ForeignKeys0.NOTETYPE__NOTETYPE_TENANT_ID_FKEY;
 
 	// -------------------------------------------------------------------------
 	// [#1459] distribute members to avoid static initialisers > 64kb
@@ -60,12 +60,12 @@ public class Keys {
 	private static class UniqueKeys0 extends AbstractKeys {
 		public static final UniqueKey<NoteRecord> NOTE_PKEY = createUniqueKey(Note.NOTE, Note.NOTE.ID);
 		public static final UniqueKey<NotetypeRecord> NOTETYPE_PKEY = createUniqueKey(Notetype.NOTETYPE, Notetype.NOTETYPE.ID);
-		public static final UniqueKey<SiteRecord> SITE_PKEY = createUniqueKey(Site.SITE, Site.SITE.ID);
+		public static final UniqueKey<TenantRecord> TENANT_PKEY = createUniqueKey(Tenant.TENANT, Tenant.TENANT.ID);
 	}
 
 	private static class ForeignKeys0 extends AbstractKeys {
-		public static final ForeignKey<NoteRecord, SiteRecord> NOTE__NOTE_SITE_ID_FKEY = createForeignKey(com.example.model.Keys.SITE_PKEY, Note.NOTE, Note.NOTE.SITE_ID);
+		public static final ForeignKey<NoteRecord, TenantRecord> NOTE__NOTE_TENANT_ID_FKEY = createForeignKey(com.example.model.Keys.TENANT_PKEY, Note.NOTE, Note.NOTE.TENANT_ID);
 		public static final ForeignKey<NoteRecord, NotetypeRecord> NOTE__NOTE_NOTETYPE_ID_FKEY = createForeignKey(com.example.model.Keys.NOTETYPE_PKEY, Note.NOTE, Note.NOTE.NOTETYPE_ID);
-		public static final ForeignKey<NotetypeRecord, SiteRecord> NOTETYPE__NOTETYPE_SITE_ID_FKEY = createForeignKey(com.example.model.Keys.SITE_PKEY, Notetype.NOTETYPE, Notetype.NOTETYPE.SITE_ID);
+		public static final ForeignKey<NotetypeRecord, TenantRecord> NOTETYPE__NOTETYPE_TENANT_ID_FKEY = createForeignKey(com.example.model.Keys.TENANT_PKEY, Notetype.NOTETYPE, Notetype.NOTETYPE.TENANT_ID);
 	}
 }

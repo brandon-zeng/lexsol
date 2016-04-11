@@ -25,12 +25,12 @@ public class NoteTypeData {
         this.name = name;
     }
 
-    public SiteData getSite() {
-        return site;
+    public TenantData getTenant() {
+        return tenant;
     }
 
-    public void setSite(SiteData site) {
-        this.site = site;
+    public void setTenant(TenantData tenant) {
+        this.tenant = tenant;
     }
 
     public LocalDateTime getSecondarydate() {
@@ -75,7 +75,7 @@ public class NoteTypeData {
 
     private int id;
     private String name;
-    private SiteData site;
+    private TenantData tenant;
     private LocalDateTime secondarydate;
     private Boolean sitevisitNote;
     private Boolean showDealIssues;
@@ -86,7 +86,7 @@ public class NoteTypeData {
         NoteTypeData data = new NoteTypeData();
 //        data.setId(record.getId());
 //        data.setName(record.getName());
-//        data.setSite(SiteData.from(record.getSiteId()));
+//        data.setTenant(TenantData.from(record.getTenantId()));
 //        data.setSecondarydate(record.getSecondarydate().toLocalTime());
 //        data.setSitevisitNote(record.getSitevisitnote());
 //        data.setShowDealIssues(record.getShowdealissues());

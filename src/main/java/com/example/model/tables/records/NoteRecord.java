@@ -31,7 +31,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class NoteRecord extends UpdatableRecordImpl<NoteRecord> implements Record15<Integer, Integer, Integer, Integer, Integer, Timestamp, Timestamp, String, Timestamp, Integer, Timestamp, Integer, Timestamp, Object, Object> {
 
-	private static final long serialVersionUID = 601425482;
+	private static final long serialVersionUID = -1131990841;
 
 	/**
 	 * Setter for <code>public.note.id</code>.
@@ -48,16 +48,16 @@ public class NoteRecord extends UpdatableRecordImpl<NoteRecord> implements Recor
 	}
 
 	/**
-	 * Setter for <code>public.note.site_id</code>.
+	 * Setter for <code>public.note.tenant_id</code>.
 	 */
-	public void setSiteId(Integer value) {
+	public void setTenantId(Integer value) {
 		setValue(1, value);
 	}
 
 	/**
-	 * Getter for <code>public.note.site_id</code>.
+	 * Getter for <code>public.note.tenant_id</code>.
 	 */
-	public Integer getSiteId() {
+	public Integer getTenantId() {
 		return (Integer) getValue(1);
 	}
 
@@ -288,7 +288,7 @@ public class NoteRecord extends UpdatableRecordImpl<NoteRecord> implements Recor
 	 */
 	@Override
 	public Field<Integer> field2() {
-		return Note.NOTE.SITE_ID;
+		return Note.NOTE.TENANT_ID;
 	}
 
 	/**
@@ -408,7 +408,7 @@ public class NoteRecord extends UpdatableRecordImpl<NoteRecord> implements Recor
 	 */
 	@Override
 	public Integer value2() {
-		return getSiteId();
+		return getTenantId();
 	}
 
 	/**
@@ -529,7 +529,7 @@ public class NoteRecord extends UpdatableRecordImpl<NoteRecord> implements Recor
 	 */
 	@Override
 	public NoteRecord value2(Integer value) {
-		setSiteId(value);
+		setTenantId(value);
 		return this;
 	}
 
@@ -687,11 +687,11 @@ public class NoteRecord extends UpdatableRecordImpl<NoteRecord> implements Recor
 	/**
 	 * Create a detached, initialised NoteRecord
 	 */
-	public NoteRecord(Integer id, Integer siteId, Integer notetypeId, Integer propertyId, Integer sitevisitId, Timestamp notedate, Timestamp secondarydate, String note, Timestamp createddate, Integer createdby, Timestamp lastmodifieddate, Integer secondarydatechangedbyId, Timestamp secondarydatechangedate, Object dealissues, Object discussionpoints) {
+	public NoteRecord(Integer id, Integer tenantId, Integer notetypeId, Integer propertyId, Integer sitevisitId, Timestamp notedate, Timestamp secondarydate, String note, Timestamp createddate, Integer createdby, Timestamp lastmodifieddate, Integer secondarydatechangedbyId, Timestamp secondarydatechangedate, Object dealissues, Object discussionpoints) {
 		super(Note.NOTE);
 
 		setValue(0, id);
-		setValue(1, siteId);
+		setValue(1, tenantId);
 		setValue(2, notetypeId);
 		setValue(3, propertyId);
 		setValue(4, sitevisitId);

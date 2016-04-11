@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 public class NoteData {
     private int id;
 
-    public SiteData getSite() {
-        return site;
+    public TenantData getTenant() {
+        return tenant;
     }
 
-    public void setSite(SiteData site) {
-        this.site = site;
+    public void setTenant(TenantData tenant) {
+        this.tenant = tenant;
     }
 
     public NoteTypeData getNoteTypeData() {
@@ -123,7 +123,7 @@ public class NoteData {
         this.discussionPoints = discussionPoints;
     }
 
-    private SiteData site;
+    private TenantData tenant;
     private NoteTypeData noteTypeData;
     private int propertyId;
     private int siteVisitId;
@@ -150,7 +150,7 @@ public class NoteData {
     public static NoteData from(NoteRecord record){
         NoteData data = new NoteData();
 //        data.setId(record.getId());
-//        data.setSite(SiteData.from(record.getSiteId()));
+//        data.setTenant(TenantData.from(record.getSiteId()));
 //        data.setNoteTypeData(NoteTypeData.from(record.getNotetypeId()));
 //        data.setSecondaryDate(record.getSecondarydate());
 //        data.setNoteText(record.getNotetext());

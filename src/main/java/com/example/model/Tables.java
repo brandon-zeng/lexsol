@@ -6,7 +6,7 @@ package com.example.model;
 
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
-import com.example.model.tables.Site;
+import com.example.model.tables.Tenant;
 
 import javax.annotation.Generated;
 
@@ -35,7 +35,7 @@ public class Tables {
 	public static final Notetype NOTETYPE = com.example.model.tables.Notetype.NOTETYPE;
 
 	/**
-	 * The table public.site
+	 * The table public.tenant
 	 */
-	public static final Site SITE = com.example.model.tables.Site.SITE;
+	public static final Tenant TENANT = com.example.model.tables.Tenant.TENANT;
 }

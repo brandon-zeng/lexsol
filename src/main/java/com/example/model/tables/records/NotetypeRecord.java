@@ -29,7 +29,7 @@ import org.jooq.impl.UpdatableRecordImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class NotetypeRecord extends UpdatableRecordImpl<NotetypeRecord> implements Record8<Integer, String, Integer, Boolean, Integer, Boolean, Boolean, Object> {
 
-	private static final long serialVersionUID = -151245718;
+	private static final long serialVersionUID = 65587315;
 
 	/**
 	 * Setter for <code>public.notetype.id</code>.
@@ -60,16 +60,16 @@ public class NotetypeRecord extends UpdatableRecordImpl<NotetypeRecord> implemen
 	}
 
 	/**
-	 * Setter for <code>public.notetype.site_id</code>.
+	 * Setter for <code>public.notetype.tenant_id</code>.
 	 */
-	public void setSiteId(Integer value) {
+	public void setTenantId(Integer value) {
 		setValue(2, value);
 	}
 
 	/**
-	 * Getter for <code>public.notetype.site_id</code>.
+	 * Getter for <code>public.notetype.tenant_id</code>.
 	 */
-	public Integer getSiteId() {
+	public Integer getTenantId() {
 		return (Integer) getValue(2);
 	}
 
@@ -196,7 +196,7 @@ public class NotetypeRecord extends UpdatableRecordImpl<NotetypeRecord> implemen
 	 */
 	@Override
 	public Field<Integer> field3() {
-		return Notetype.NOTETYPE.SITE_ID;
+		return Notetype.NOTETYPE.TENANT_ID;
 	}
 
 	/**
@@ -260,7 +260,7 @@ public class NotetypeRecord extends UpdatableRecordImpl<NotetypeRecord> implemen
 	 */
 	@Override
 	public Integer value3() {
-		return getSiteId();
+		return getTenantId();
 	}
 
 	/**
@@ -326,7 +326,7 @@ public class NotetypeRecord extends UpdatableRecordImpl<NotetypeRecord> implemen
 	 */
 	@Override
 	public NotetypeRecord value3(Integer value) {
-		setSiteId(value);
+		setTenantId(value);
 		return this;
 	}
 
@@ -405,12 +405,12 @@ public class NotetypeRecord extends UpdatableRecordImpl<NotetypeRecord> implemen
 	/**
 	 * Create a detached, initialised NotetypeRecord
 	 */
-	public NotetypeRecord(Integer id, String name, Integer siteId, Boolean secondarydate, Integer sitevisitId, Boolean showdealissues, Boolean deletepermittedinterval, Object discussiontopics) {
+	public NotetypeRecord(Integer id, String name, Integer tenantId, Boolean secondarydate, Integer sitevisitId, Boolean showdealissues, Boolean deletepermittedinterval, Object discussiontopics) {
 		super(Notetype.NOTETYPE);
 
 		setValue(0, id);
 		setValue(1, name);
-		setValue(2, siteId);
+		setValue(2, tenantId);
 		setValue(3, secondarydate);
 		setValue(4, sitevisitId);
 		setValue(5, showdealissues);

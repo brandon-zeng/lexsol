@@ -35,7 +35,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Note extends TableImpl<NoteRecord> {
 
-	private static final long serialVersionUID = -631197336;
+	private static final long serialVersionUID = 1487877864;
 
 	/**
 	 * The reference instance of <code>public.note</code>
@@ -56,9 +56,9 @@ public class Note extends TableImpl<NoteRecord> {
 	public final TableField<NoteRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
 	/**
-	 * The column <code>public.note.site_id</code>.
+	 * The column <code>public.note.tenant_id</code>.
 	 */
-	public final TableField<NoteRecord, Integer> SITE_ID = createField("site_id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+	public final TableField<NoteRecord, Integer> TENANT_ID = createField("tenant_id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
 	/**
 	 * The column <code>public.note.notetype_id</code>.
@@ -168,7 +168,7 @@ public class Note extends TableImpl<NoteRecord> {
 	 */
 	@Override
 	public List<ForeignKey<NoteRecord, ?>> getReferences() {
-		return Arrays.<ForeignKey<NoteRecord, ?>>asList(Keys.NOTE__NOTE_SITE_ID_FKEY, Keys.NOTE__NOTE_NOTETYPE_ID_FKEY);
+		return Arrays.<ForeignKey<NoteRecord, ?>>asList(Keys.NOTE__NOTE_TENANT_ID_FKEY, Keys.NOTE__NOTE_NOTETYPE_ID_FKEY);
 	}
 
 	/**
