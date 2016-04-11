@@ -57,8 +57,7 @@ public class NoteRepository {
 //                    .fetchOne();
 //
 //            return NoteData.from(newRecord);
-            return  null;
-
+            return null;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

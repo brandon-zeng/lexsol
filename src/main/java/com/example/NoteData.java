@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.model.tables.records.NoteRecord;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.time.LocalDateTime;
@@ -149,18 +150,20 @@ public class NoteData {
 
     public static NoteData from(NoteRecord record){
         NoteData data = new NoteData();
-//        data.setId(record.getId());
-//        data.setTenant(TenantData.from(record.getSiteId()));
-//        data.setNoteTypeData(NoteTypeData.from(record.getNotetypeId()));
-//        data.setSecondaryDate(record.getSecondarydate());
-//        data.setNoteText(record.getNotetext());
-//        data.setCreateDate(record.getCreateddate());
-//        data.setCreatedById(record.getCreatedbyId());
-//        data.setLastModifiedDate(record.getLastmodifieddate());
-//        data.setSecondaryDateChangedById(record.getSecondarydatechangedbyId());
-//        data.setSecondaryDateChangeDate(record.getSecondarydatechangedate());
-//        data.setDealIssues(record.getDealissues());
-//        data.setDiscussionPoints(record.getDiscussionpoints());
+        ObjectMapper jackson = new ObjectMapper();
+
+        data.setId(record.getId());
+        data.setTenant(TenantData.from(record.getTenantId()));
+        data.setNoteTypeData(NoteTypeData.from(record.getNotetypeId()));
+        data.setSecondaryDate(record.getSecondarydate().toLocalDateTime());
+        data.setNoteText(record.getNote());
+        data.setCreateDate(record.getCreateddate().toLocalDateTime());
+        data.setCreatedById(record.getCreatedby());
+        data.setLastModifiedDate(record.getLastmodifieddate().toLocalDateTime());
+        data.setSecondaryDateChangedById(record.getSecondarydatechangedbyId());
+        data.setSecondaryDateChangeDate(record.getSecondarydatechangedate().toLocalDateTime());
+        data.setDealIssues(jackson.convertValue(record.getDealissues(), ObjectNode.class));
+        data.setDiscussionPoints(jackson.convertValue(record.getDiscussionpoints(), ObjectNode.class));
 
         return data;
     }

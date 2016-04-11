@@ -13,12 +13,8 @@ import java.util.List;
 @RestController
 public class NoteController {
 
-    private NoteRepository repository;
-
     @Autowired
-    public NoteController(NoteRepository repository) {
-        this.repository = repository;
-    }
+    private NoteRepository repository;
 
     @RequestMapping(value = "/api/notes", method = RequestMethod.GET)
     public List<NoteData> getNotes() {

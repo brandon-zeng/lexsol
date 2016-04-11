@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testsuite name="com.example.DemoApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-04-11T14:49:24" hostname="vagrant-ubuntu-trusty-64" time="0.004">
   <properties/>
   <testcase name="contextLoads" classname="com.example.DemoApplicationTests" time="0.004"/>
@@ -25,6 +26,34 @@
 14:49:21.503 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
 14:49:21.503 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
 14:49:21.505 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
+=======
+<testsuite name="com.example.DemoApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-04-11T17:40:55" hostname="vagrant-ubuntu-trusty-64" time="0.003">
+  <properties/>
+  <testcase name="contextLoads" classname="com.example.DemoApplicationTests" time="0.003"/>
+  <system-out><![CDATA[17:40:52.061 [Test worker] DEBUG o.s.t.c.j.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class com.example.DemoApplicationTests]
+17:40:52.066 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:40:52.070 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:40:52.081 [Test worker] DEBUG o.s.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.DemoApplicationTests] from class [org.springframework.test.context.web.WebTestContextBootstrapper]
+17:40:52.099 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - Found explicit ContextLoader class [org.springframework.boot.test.SpringApplicationContextLoader] for context configuration attributes [ContextConfigurationAttributes@6830881 declaringClass = 'com.example.DemoApplicationTests', classes = '{class com.example.DemoApplication}', locations = '{}', inheritLocations = true, initializers = '{}', inheritInitializers = true, name = [null], contextLoaderClass = 'org.springframework.boot.test.SpringApplicationContextLoader']
+17:40:52.106 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.example.DemoApplicationTests]: class path resource [com/example/DemoApplicationTests-context.xml] does not exist
+17:40:52.106 [Test worker] DEBUG o.s.t.c.s.AbstractContextLoader - Did not detect default resource location for test class [com.example.DemoApplicationTests]: class path resource [com/example/DemoApplicationTestsContext.groovy] does not exist
+17:40:52.106 [Test worker] INFO  o.s.t.c.s.AbstractContextLoader - Could not detect default resource locations for test class [com.example.DemoApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:40:52.108 [Test worker] DEBUG o.s.t.c.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.DemoApplicationTests]
+17:40:52.112 [Test worker] DEBUG o.s.t.c.w.WebTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.DemoApplicationTests]: using defaults.
+17:40:52.119 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+17:40:52.133 [Test worker] INFO  o.s.t.c.w.WebTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@54de1b9f, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@73792f2, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@fcf00e8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@75cb43ce, org.springframework.test.context.transaction.TransactionalTestExecutionListener@51edac0b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6a7604c6]
+17:40:52.136 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.DemoApplicationTests]
+17:40:52.136 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.DemoApplicationTests]
+17:40:52.137 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.DemoApplicationTests]
+17:40:52.137 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.DemoApplicationTests]
+17:40:52.140 [Test worker] DEBUG o.s.t.c.s.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@73aab26e testClass = DemoApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@4e653f88 testClass = DemoApplicationTests, locations = '{}', classes = '{class com.example.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.SpringApplicationContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+17:40:52.141 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [com.example.DemoApplicationTests]
+17:40:52.141 [Test worker] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [com.example.DemoApplicationTests]
+17:40:52.204 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+17:40:52.205 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+17:40:52.205 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+17:40:52.207 [Test worker] DEBUG o.s.core.env.StandardEnvironment - Adding [integrationTest] PropertySource with search precedence immediately lower than [systemEnvironment]
+>>>>>>> Stashed changes
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -34,6 +63,7 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.3.3.RELEASE)
 
+<<<<<<< Updated upstream
 2016-04-11 14:49:21.822  INFO 15950 --- [    Test worker] com.example.DemoApplicationTests         : Starting DemoApplicationTests on vagrant-ubuntu-trusty-64 with PID 15950 (/home/vagrant/IdeaProjects/demo/lexsol/build/classes/test started by vagrant in /home/vagrant/IdeaProjects/demo/lexsol)
 2016-04-11 14:49:21.823  INFO 15950 --- [    Test worker] com.example.DemoApplicationTests         : No active profile set, falling back to default profiles: default
 2016-04-11 14:49:21.907  INFO 15950 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2eaa0412: startup date [Mon Apr 11 14:49:21 UTC 2016]; root of context hierarchy
@@ -49,6 +79,23 @@
 2016-04-11 14:49:24.497  INFO 15950 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 2016-04-11 14:49:24.548  INFO 15950 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 2016-04-11 14:49:24.750  INFO 15950 --- [    Test worker] com.example.DemoApplicationTests         : Started DemoApplicationTests in 3.235 seconds (JVM running for 4.223)
+=======
+2016-04-11 17:40:52.501  INFO 4612 --- [    Test worker] com.example.DemoApplicationTests         : Starting DemoApplicationTests on vagrant-ubuntu-trusty-64 with PID 4612 (/home/vagrant/demo/lexsol/build/classes/test started by vagrant in /home/vagrant/demo/lexsol)
+2016-04-11 17:40:52.501  INFO 4612 --- [    Test worker] com.example.DemoApplicationTests         : No active profile set, falling back to default profiles: default
+2016-04-11 17:40:52.566  INFO 4612 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2e58227a: startup date [Mon Apr 11 17:40:52 UTC 2016]; root of context hierarchy
+2016-04-11 17:40:53.224  INFO 4612 --- [    Test worker] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'beanNameViewResolver' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/ErrorMvcAutoConfiguration$WhitelabelErrorViewConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter; factoryMethodName=beanNameViewResolver; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/WebMvcAutoConfiguration$WebMvcAutoConfigurationAdapter.class]]
+2016-04-11 17:40:53.480  INFO 4612 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$e9cc6f60] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2016-04-11 17:40:54.762  INFO 4612 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@2e58227a: startup date [Mon Apr 11 17:40:52 UTC 2016]; root of context hierarchy
+2016-04-11 17:40:54.838  INFO 4612 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/notes/{noteId}],methods=[GET]}" onto public com.example.NoteData com.example.NoteController.getNote(int)
+2016-04-11 17:40:54.840  INFO 4612 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/notes],methods=[POST]}" onto public org.springframework.http.ResponseEntity<com.example.NoteData> com.example.NoteController.addNote(com.example.NoteData)
+2016-04-11 17:40:54.840  INFO 4612 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/notes],methods=[GET]}" onto public java.util.List<com.example.NoteData> com.example.NoteController.getNotes()
+2016-04-11 17:40:54.842  INFO 4612 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2016-04-11 17:40:54.842  INFO 4612 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2016-04-11 17:40:54.876  INFO 4612 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-11 17:40:54.876  INFO 4612 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-11 17:40:54.922  INFO 4612 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2016-04-11 17:40:55.158  INFO 4612 --- [    Test worker] com.example.DemoApplicationTests         : Started DemoApplicationTests in 2.941 seconds (JVM running for 3.853)
+>>>>>>> Stashed changes
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
