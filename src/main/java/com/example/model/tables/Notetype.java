@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Notetype extends TableImpl<NotetypeRecord> {
 
-	private static final long serialVersionUID = 753790118;
+	private static final long serialVersionUID = 982389055;
 
 	/**
 	 * The reference instance of <code>public.notetype</code>
@@ -88,11 +88,6 @@ public class Notetype extends TableImpl<NotetypeRecord> {
 	 * The column <code>public.notetype.discussiontopics</code>.
 	 */
 	public final TableField<NotetypeRecord, Object> DISCUSSIONTOPICS = createField("discussiontopics", org.jooq.impl.DefaultDataType.getDefaultDataType("jsonb"), this, "");
-
-	/**
-	 * The column <code>public.notetype.foo</code>.
-	 */
-	public final TableField<NotetypeRecord, String> FOO = createField("foo", org.jooq.impl.SQLDataType.VARCHAR.length(30), this, "");
 
 	/**
 	 * Create a <code>public.notetype</code> table reference
