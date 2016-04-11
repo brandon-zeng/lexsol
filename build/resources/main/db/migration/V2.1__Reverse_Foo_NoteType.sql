@@ -1,0 +1,1 @@
+alter table notetype DROP column foo

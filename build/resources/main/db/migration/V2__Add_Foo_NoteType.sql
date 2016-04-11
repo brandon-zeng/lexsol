@@ -1,0 +1,1 @@
+alter table notetype add column foo varchar(30)
