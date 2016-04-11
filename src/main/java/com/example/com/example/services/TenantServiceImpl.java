@@ -21,11 +21,16 @@ class TenantServiceImpl implements TenantService {
 
     @Override
     public Optional<TenantData> createTenant(TenantData newTenant) {
-        return Optional.of(repository.addTenant(newTenant));
+        return repository.addTenant(newTenant);
     }
 
     @Override
     public Collection<TenantData> getTenants() {
-        return new ArrayList<>();
+        return repository.getTenants();
+    }
+
+    @Override
+    public Optional<TenantData> getTenant(int id) {
+        return repository.getTenant(id);
     }
 }

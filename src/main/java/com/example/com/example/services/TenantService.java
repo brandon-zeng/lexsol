@@ -12,4 +12,5 @@ public interface TenantService {
 
     Optional<TenantData> createTenant(TenantData newTenant);
     Collection<TenantData> getTenants();
+    Optional<TenantData> getTenant(int id);
 }

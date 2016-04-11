@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -17,13 +18,13 @@ public class NoteController {
     private NoteRepository repository;
 
     @RequestMapping(value = "/api/notes", method = RequestMethod.GET)
-    public List<NoteData> getNotes() {
+    public Collection<NoteData> getNotes() {
         return this.repository.getNotes();
     }
 
     @RequestMapping(value = "/api/notes/{noteId}", method = RequestMethod.GET)
     public NoteData getNote(@PathVariable int noteId) {
-        return this.repository.getNote(noteId);
+        return this.repository.getNote(noteId).get();
     }
 
     @RequestMapping(value = "/api/notes", method = RequestMethod.POST)

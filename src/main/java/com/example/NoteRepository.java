@@ -9,7 +9,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by vagrant on 4/8/16.
@@ -25,24 +28,15 @@ public class NoteRepository {
     }
 
     @Transactional(readOnly = true)
-    public List<NoteData> getNotes(){
-        List<NoteData> results = new ArrayList<NoteData>();
-        List<com.example.model.tables.records.NoteRecord> queryResult = jooq.selectFrom(Note.NOTE).fetchInto(NoteRecord.class);
-
-        for(NoteRecord record : queryResult) {
-            results.add(NoteData.from(record));
-        }
-        return results;
+    public Collection<NoteData> getNotes(){
+        List<NoteRecord> queryResult = jooq.selectFrom(Note.NOTE).fetchInto(NoteRecord.class);
+        return queryResult.stream().map(NoteData::from).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
-    public NoteData getNote(int id){
+    public Optional<NoteData> getNote(int id){
         NoteRecord queryResult = jooq.fetchAny(Note.NOTE, Note.NOTE.ID.eq(id));
-
-        if (queryResult != null) {
-            return NoteData.from(queryResult);
-        }
-        return null;
+        return queryResult == null ? Optional.empty() : Optional.of(NoteData.from(queryResult));
     }
 
     @Transactional
