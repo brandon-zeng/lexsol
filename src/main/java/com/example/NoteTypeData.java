@@ -33,20 +33,20 @@ public class NoteTypeData {
         this.tenant = tenant;
     }
 
-    public LocalDateTime getSecondarydate() {
+    public Boolean getSecondarydate() {
         return secondarydate;
     }
 
-    public void setSecondarydate(LocalDateTime secondarydate) {
+    public void setSecondarydate(Boolean secondarydate) {
         this.secondarydate = secondarydate;
     }
 
-    public Boolean getSitevisitNote() {
-        return sitevisitNote;
+    public int getSitevisit() {
+        return siteVisit;
     }
 
-    public void setSitevisitNote(Boolean sitevisitNote) {
-        this.sitevisitNote = sitevisitNote;
+    public void setSitevisitNote(int siteVisit) {
+        this.siteVisit = siteVisit;
     }
 
     public Boolean getShowDealIssues() {
@@ -65,22 +65,22 @@ public class NoteTypeData {
         this.deletePermittedInterval = deletePermittedInterval;
     }
 
-    public ObjectNode getDiscussionTopics() {
+    public Object getDiscussionTopics() {
         return discussionTopics;
     }
 
-    public void setDiscussionTopics(ObjectNode discussionTopics) {
+    public void setDiscussionTopics(Object discussionTopics) {
         this.discussionTopics = discussionTopics;
     }
 
     private int id;
     private String name;
     private TenantData tenant;
-    private LocalDateTime secondarydate;
-    private Boolean sitevisitNote;
+    private Boolean secondarydate;
+    private int siteVisit;
     private Boolean showDealIssues;
     private int deletePermittedInterval;
-    private ObjectNode discussionTopics;
+    private Object discussionTopics;
 
     public static NoteTypeData from(NotetypeRecord record){
         NoteTypeData data = new NoteTypeData();

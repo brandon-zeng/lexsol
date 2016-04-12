@@ -18,12 +18,12 @@ public class NoteTypeController {
     @Autowired
     NoteTypeService service;
 
-    @RequestMapping(value = "/api/noteTypes/", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/noteTypes", method = RequestMethod.POST)
     public ResponseEntity<NoteTypeData> addNoteType(@RequestBody NoteTypeData data)  {
         return new ResponseEntity<>(service.createNoteType(data).get(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/noteTypes/", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/noteTypes", method = RequestMethod.GET)
     public Collection<NoteTypeData> getNoteTypes()  {
         return service.getNoteTypes();
     }

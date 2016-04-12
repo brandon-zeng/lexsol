@@ -4,12 +4,17 @@
 package com.example.model;
 
 
+import com.example.model.tables.Each;
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
 import com.example.model.tables.SchemaVersion;
+import com.example.model.tables.Skeys;
+import com.example.model.tables.Svals;
 import com.example.model.tables.Tenant;
 
 import javax.annotation.Generated;
+
+import org.jooq.Field;
 
 
 /**
@@ -26,6 +31,25 @@ import javax.annotation.Generated;
 public class Tables {
 
 	/**
+	 * The table public.each
+	 */
+	public static final Each EACH = com.example.model.tables.Each.EACH;
+
+	/**
+	 * Get <code>public.each</code> as a field
+	 */
+	public static Each EACH(Object hs) {
+		return Each.EACH.call(hs);
+	}
+
+	/**
+	 * Get <code>public.each</code> as a field
+	 */
+	public static Each EACH(Field<Object> hs) {
+		return Each.EACH.call(hs);
+	}
+
+	/**
 	 * The table public.note
 	 */
 	public static final Note NOTE = com.example.model.tables.Note.NOTE;
@@ -39,6 +63,44 @@ public class Tables {
 	 * The table public.schema_version
 	 */
 	public static final SchemaVersion SCHEMA_VERSION = com.example.model.tables.SchemaVersion.SCHEMA_VERSION;
+
+	/**
+	 * The table public.skeys
+	 */
+	public static final Skeys SKEYS = com.example.model.tables.Skeys.SKEYS;
+
+	/**
+	 * Get <code>public.skeys</code> as a field
+	 */
+	public static Skeys SKEYS(Object __1) {
+		return Skeys.SKEYS.call(__1);
+	}
+
+	/**
+	 * Get <code>public.skeys</code> as a field
+	 */
+	public static Skeys SKEYS(Field<Object> __1) {
+		return Skeys.SKEYS.call(__1);
+	}
+
+	/**
+	 * The table public.svals
+	 */
+	public static final Svals SVALS = com.example.model.tables.Svals.SVALS;
+
+	/**
+	 * Get <code>public.svals</code> as a field
+	 */
+	public static Svals SVALS(Object __1) {
+		return Svals.SVALS.call(__1);
+	}
+
+	/**
+	 * Get <code>public.svals</code> as a field
+	 */
+	public static Svals SVALS(Field<Object> __1) {
+		return Svals.SVALS.call(__1);
+	}
 
 	/**
 	 * The table public.tenant

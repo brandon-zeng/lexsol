@@ -34,7 +34,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Notetype extends TableImpl<NotetypeRecord> {
 
-	private static final long serialVersionUID = 982389055;
+	private static final long serialVersionUID = -1969518741;
 
 	/**
 	 * The reference instance of <code>public.notetype</code>
@@ -82,7 +82,7 @@ public class Notetype extends TableImpl<NotetypeRecord> {
 	/**
 	 * The column <code>public.notetype.deletepermittedinterval</code>.
 	 */
-	public final TableField<NotetypeRecord, Boolean> DELETEPERMITTEDINTERVAL = createField("deletepermittedinterval", org.jooq.impl.SQLDataType.BOOLEAN, this, "");
+	public final TableField<NotetypeRecord, Integer> DELETEPERMITTEDINTERVAL = createField("deletepermittedinterval", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
 	/**
 	 * The column <code>public.notetype.discussiontopics</code>.
