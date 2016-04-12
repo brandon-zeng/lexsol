@@ -4,12 +4,9 @@
 package com.example.model;
 
 
-import com.example.model.tables.Each;
 import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
 import com.example.model.tables.SchemaVersion;
-import com.example.model.tables.Skeys;
-import com.example.model.tables.Svals;
 import com.example.model.tables.Tenant;
 
 import java.util.ArrayList;
@@ -35,7 +32,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-	private static final long serialVersionUID = -1468484226;
+	private static final long serialVersionUID = -1769234383;
 
 	/**
 	 * The reference instance of <code>public</code>
@@ -58,12 +55,9 @@ public class Public extends SchemaImpl {
 
 	private final List<Table<?>> getTables0() {
 		return Arrays.<Table<?>>asList(
-			Each.EACH,
 			Note.NOTE,
 			Notetype.NOTETYPE,
 			SchemaVersion.SCHEMA_VERSION,
-			Skeys.SKEYS,
-			Svals.SVALS,
 			Tenant.TENANT);
 	}
 }
