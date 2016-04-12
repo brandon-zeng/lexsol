@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by vagrant on 4/11/16.
@@ -49,7 +51,7 @@ public class NoteTypeRepository {
                         data.getSitevisit(),
                         data.getShowDealIssues(),
                         data.getDeletePermittedInterval(),
-                        data.getDiscussionTopics()
+                        data.getDiscussionTopics().toString()
                         )
                  .returning(noteTypeTbl.ID, noteTypeTbl.NAME)
                 .fetchOne();
@@ -62,7 +64,8 @@ public class NoteTypeRepository {
     }
 
     public Collection<NoteTypeData> getNoteTypes() {
-        return null;
+        List<NotetypeRecord> result = jooq.selectFrom(Notetype.NOTETYPE).fetchInto(NotetypeRecord.class);
+        return result.stream().map(NoteTypeData::from).collect(Collectors.toList());
     }
 
 }

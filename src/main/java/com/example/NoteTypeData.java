@@ -1,6 +1,8 @@
 package com.example;
 
 import com.example.model.tables.records.NotetypeRecord;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.time.LocalDateTime;
@@ -45,7 +47,7 @@ public class NoteTypeData {
         return siteVisit;
     }
 
-    public void setSitevisitNote(int siteVisit) {
+    public void setSiteVisit(int siteVisit) {
         this.siteVisit = siteVisit;
     }
 
@@ -65,11 +67,11 @@ public class NoteTypeData {
         this.deletePermittedInterval = deletePermittedInterval;
     }
 
-    public Object getDiscussionTopics() {
+    public JsonNode getDiscussionTopics() {
         return discussionTopics;
     }
 
-    public void setDiscussionTopics(Object discussionTopics) {
+    public void setDiscussionTopics(JsonNode discussionTopics) {
         this.discussionTopics = discussionTopics;
     }
 
@@ -80,20 +82,27 @@ public class NoteTypeData {
     private int siteVisit;
     private Boolean showDealIssues;
     private int deletePermittedInterval;
-    private Object discussionTopics;
+    private JsonNode discussionTopics;
 
     public static NoteTypeData from(NotetypeRecord record){
-        NoteTypeData data = new NoteTypeData();
-//        data.setId(record.getId());
-//        data.setName(record.getName());
-//        data.setTenant(TenantData.from(record.getTenantId()));
-//        data.setSecondarydate(record.getSecondarydate().toLocalTime());
-//        data.setSitevisitNote(record.getSitevisitnote());
-//        data.setShowDealIssues(record.getShowdealissues());
-//        data.setDeletePermittedInterval(record.getDeletepermittedinterval());
-//        data.setDiscussionTopics(new ObjectNode(record.getDiscussiontopics()));
+        try {
+            ObjectMapper jackson = new ObjectMapper();
 
-        return data;
+            NoteTypeData data = new NoteTypeData();
+            data.setId(record.getId());
+            data.setName(record.getName());
+            data.setTenant(TenantData.from(record.getTenantId()));
+            data.setSecondarydate(record.getSecondarydate());
+            data.setSiteVisit(record.getSitevisitId());
+            data.setShowDealIssues(record.getShowdealissues());
+            data.setDeletePermittedInterval(record.getDeletepermittedinterval());
+            data.setDiscussionTopics(jackson.readTree(record.getDiscussiontopics()));
+
+            return data;
+        } catch (Exception e) {
+            return new NoteTypeData();
+        }
+
     }
 
     public static NoteTypeData from(int id){
