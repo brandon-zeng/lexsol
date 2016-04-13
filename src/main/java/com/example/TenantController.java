@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.com.example.services.NoteService;
+import com.example.com.example.services.NoteTypeService;
 import com.example.com.example.services.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,23 +15,51 @@ import java.util.List;
  * Created by vagrant on 4/11/16.
  */
 @RestController
+@RequestMapping(value="/api/tenants")
 public class TenantController {
 
     @Autowired
     private TenantService tenantService;
 
-    @RequestMapping(value="/api/tenants", method = RequestMethod.GET)
+    @Autowired
+    private NoteTypeService noteTypeService;
+
+    @Autowired
+    private NoteService noteService;
+
+    @RequestMapping(value="/", method = RequestMethod.GET)
     public Collection<TenantData> getTenants() {
         return  tenantService.getTenants();
     }
 
-    @RequestMapping(value="/api/tenants", method = RequestMethod.POST)
+    @RequestMapping(value="/", method = RequestMethod.POST)
     public ResponseEntity<TenantData> createTenant(@RequestBody TenantData tenant) {
         return new ResponseEntity<>(tenantService.createTenant(tenant).get(), HttpStatus.OK);
     }
 
-    @RequestMapping(value="/api/tenants/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public ResponseEntity<TenantData> getTenant(@PathVariable int id) {
         return new ResponseEntity<>(tenantService.getTenant(id).get(), HttpStatus.OK);
     }
+
+    @RequestMapping(value="/{id}/noteTypes", method = RequestMethod.GET)
+    public Collection<NoteTypeData> getNoteTypes(@PathVariable int id) {
+        return noteTypeService.getNoteTypes(id);
+    }
+
+    @RequestMapping(value="/{id}/noteTypes", method = RequestMethod.POST)
+    public ResponseEntity<NoteTypeData> addNoteTypes(@PathVariable int id, @RequestBody NoteTypeData data) {
+        return new ResponseEntity<>(noteTypeService.createNoteType(id, data).get(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/{tenantID}/noteTypes/{noteTypeID}", method = RequestMethod.GET)
+    public ResponseEntity<NoteTypeData> getNoteType(@PathVariable int tenantID, @PathVariable int noteTypeID) {
+        return new ResponseEntity<>(noteTypeService.getNoteType(tenantID, noteTypeID).get(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/{tenantID}/notes", method = RequestMethod.POST)
+    public ResponseEntity<NoteData> addNote(@PathVariable int tenantID, @RequestBody NoteData data) {
+        return new ResponseEntity<>(noteService.addNote(tenantID, data).get(), HttpStatus.OK);
+    }
+
 }

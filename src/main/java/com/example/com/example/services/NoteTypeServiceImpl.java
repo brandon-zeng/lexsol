@@ -18,17 +18,17 @@ public class NoteTypeServiceImpl implements NoteTypeService {
     private NoteTypeRepository repo;
 
     @Override
-    public Optional<NoteTypeData> createNoteType(NoteTypeData data) {
-        return repo.createNoteType(data);
+    public Optional<NoteTypeData> createNoteType(int tenantID, NoteTypeData data) {
+        return repo.createNoteType(tenantID, data);
     }
 
     @Override
-    public Optional<NoteTypeData> getNoteType(int id) {
-        return repo.getNoteType(id);
+    public Optional<NoteTypeData> getNoteType(int tenantID, int noteTypeID) {
+        return repo.getNoteType(tenantID, noteTypeID);
     }
 
     @Override
-    public Collection<NoteTypeData> getNoteTypes() {
-        return repo.getNoteTypes();
+    public Collection<NoteTypeData> getNoteTypes(int tenantID) {
+        return repo.getNoteTypes(tenantID);
     }
 }

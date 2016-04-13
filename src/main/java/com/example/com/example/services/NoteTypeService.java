@@ -9,7 +9,7 @@ import java.util.Optional;
  * Created by vagrant on 4/11/16.
  */
 public interface NoteTypeService {
-    Optional<NoteTypeData> createNoteType(NoteTypeData data);
-    Optional<NoteTypeData> getNoteType(int id);
-    Collection<NoteTypeData> getNoteTypes();
+    Optional<NoteTypeData> createNoteType(int tenantID, NoteTypeData data);
+    Optional<NoteTypeData> getNoteType(int tenantID, int noteTypeID);
+    Collection<NoteTypeData> getNoteTypes(int tenantID);
 }

@@ -40,7 +40,7 @@ public class NoteRepository {
     }
 
     @Transactional
-    public NoteData addNote(NoteData data) {
+    public NoteData addNote(int tenantID, NoteData data) {
         try {
 
 //            int maxId = jooq.select(Note.NOTE.ID.max()).from(Note.NOTE).fetchAny().value1();

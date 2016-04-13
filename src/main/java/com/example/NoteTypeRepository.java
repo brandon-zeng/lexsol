@@ -1,7 +1,9 @@
 package com.example;
 
+import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
 import com.example.model.tables.Tenant;
+import com.example.model.tables.records.NoteRecord;
 import com.example.model.tables.records.NotetypeRecord;
 import com.example.model.tables.records.TenantRecord;
 import org.jooq.DSLContext;
@@ -27,7 +29,7 @@ public class NoteTypeRepository {
 //        this.jooq = jooq;
 //    }
 
-    public Optional<NoteTypeData> createNoteType(NoteTypeData data) {
+    public Optional<NoteTypeData> createNoteType(int tenantID, NoteTypeData data) {
         Record1<Integer> currentMaxRecord = jooq.select(Notetype.NOTETYPE.ID.max()).from(Notetype.NOTETYPE).fetchAny();
         int maxId = (currentMaxRecord.value1() != null && currentMaxRecord.value1() > 0) ? currentMaxRecord.value1() : 0;
 
@@ -46,25 +48,38 @@ public class NoteTypeRepository {
                             )
                 .values(maxId + 1,
                         data.getName(),
-                        data.getTenant().getId(),
+                        tenantID,
                         data.getSecondarydate(),
                         data.getSitevisit(),
                         data.getShowDealIssues(),
                         data.getDeletePermittedInterval(),
                         data.getDiscussionTopics().toString()
                         )
-                 .returning(noteTypeTbl.ID, noteTypeTbl.NAME)
+                 .returning(noteTypeTbl.ID,
+                            noteTypeTbl.NAME,
+                            noteTypeTbl.TENANT_ID,
+                            noteTypeTbl.SECONDARYDATE,
+                            noteTypeTbl.SITEVISIT_ID,
+                            noteTypeTbl.SHOWDEALISSUES,
+                            noteTypeTbl.DELETEPERMITTEDINTERVAL,
+                            noteTypeTbl.DISCUSSIONTOPICS)
                 .fetchOne();
 
         return  r == null ? Optional.empty() : Optional.of(NoteTypeData.from(r));
     }
 
-    public Optional<NoteTypeData> getNoteType(int id) {
-        return null;
+    public Optional<NoteTypeData> getNoteType(int tenantID, int noteTypeID) {
+        NotetypeRecord queryResult = jooq.selectFrom(Notetype.NOTETYPE)
+                .where(Notetype.NOTETYPE.TENANT_ID.eq(tenantID), Notetype.NOTETYPE.ID.eq(noteTypeID))
+                .fetchOne();
+
+        return queryResult == null ? Optional.empty() : Optional.of(NoteTypeData.from(queryResult));
     }
 
-    public Collection<NoteTypeData> getNoteTypes() {
-        List<NotetypeRecord> result = jooq.selectFrom(Notetype.NOTETYPE).fetchInto(NotetypeRecord.class);
+    public Collection<NoteTypeData> getNoteTypes(int tenantID) {
+        List<NotetypeRecord> result = jooq.selectFrom(Notetype.NOTETYPE)
+                .where(Notetype.NOTETYPE.TENANT_ID.eq(tenantID))
+                .fetchInto(NotetypeRecord.class);
         return result.stream().map(NoteTypeData::from).collect(Collectors.toList());
     }
 

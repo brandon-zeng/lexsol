@@ -27,14 +27,6 @@ public class NoteTypeData {
         this.name = name;
     }
 
-    public TenantData getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(TenantData tenant) {
-        this.tenant = tenant;
-    }
-
     public Boolean getSecondarydate() {
         return secondarydate;
     }
@@ -77,7 +69,6 @@ public class NoteTypeData {
 
     private int id;
     private String name;
-    private TenantData tenant;
     private Boolean secondarydate;
     private int siteVisit;
     private Boolean showDealIssues;
@@ -91,7 +82,6 @@ public class NoteTypeData {
             NoteTypeData data = new NoteTypeData();
             data.setId(record.getId());
             data.setName(record.getName());
-            data.setTenant(TenantData.from(record.getTenantId()));
             data.setSecondarydate(record.getSecondarydate());
             data.setSiteVisit(record.getSitevisitId());
             data.setShowDealIssues(record.getShowdealissues());
@@ -102,7 +92,6 @@ public class NoteTypeData {
         } catch (Exception e) {
             return new NoteTypeData();
         }
-
     }
 
     public static NoteTypeData from(int id){

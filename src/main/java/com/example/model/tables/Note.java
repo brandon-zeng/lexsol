@@ -35,7 +35,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Note extends TableImpl<NoteRecord> {
 
-	private static final long serialVersionUID = 1487877864;
+	private static final long serialVersionUID = 1776263594;
 
 	/**
 	 * The reference instance of <code>public.note</code>
@@ -118,12 +118,12 @@ public class Note extends TableImpl<NoteRecord> {
 	/**
 	 * The column <code>public.note.dealissues</code>.
 	 */
-	public final TableField<NoteRecord, Object> DEALISSUES = createField("dealissues", org.jooq.impl.DefaultDataType.getDefaultDataType("jsonb"), this, "");
+	public final TableField<NoteRecord, String> DEALISSUES = createField("dealissues", org.jooq.impl.SQLDataType.CLOB, this, "");
 
 	/**
 	 * The column <code>public.note.discussionpoints</code>.
 	 */
-	public final TableField<NoteRecord, Object> DISCUSSIONPOINTS = createField("discussionpoints", org.jooq.impl.DefaultDataType.getDefaultDataType("jsonb"), this, "");
+	public final TableField<NoteRecord, String> DISCUSSIONPOINTS = createField("discussionpoints", org.jooq.impl.SQLDataType.CLOB, this, "");
 
 	/**
 	 * Create a <code>public.note</code> table reference
