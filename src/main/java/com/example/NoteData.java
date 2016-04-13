@@ -1,6 +1,8 @@
 package com.example;
 
 import com.example.model.tables.records.NoteRecord;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -108,19 +110,19 @@ public class NoteData {
         this.secondaryDateChangeDate = secondaryDateChangeDate;
     }
 
-    public ObjectNode getDealIssues() {
+    public JsonNode getDealIssues() {
         return dealIssues;
     }
 
-    public void setDealIssues(ObjectNode dealIssues) {
+    public void setDealIssues(JsonNode dealIssues) {
         this.dealIssues = dealIssues;
     }
 
-    public ObjectNode getDiscussionPoints() {
+    public JsonNode getDiscussionPoints() {
         return discussionPoints;
     }
 
-    public void setDiscussionPoints(ObjectNode discussionPoints) {
+    public void setDiscussionPoints(JsonNode discussionPoints) {
         this.discussionPoints = discussionPoints;
     }
 
@@ -136,9 +138,8 @@ public class NoteData {
     private LocalDateTime lastModifiedDate;
     private int secondaryDateChangedById;
     private LocalDateTime secondaryDateChangeDate;
-    private ObjectNode dealIssues;
-    private ObjectNode discussionPoints;
-
+    private JsonNode dealIssues;
+    private JsonNode discussionPoints;
 
     public int getId() {
         return id;
@@ -149,22 +150,29 @@ public class NoteData {
     }
 
     public static NoteData from(NoteRecord record){
-        NoteData data = new NoteData();
-        ObjectMapper jackson = new ObjectMapper();
+        try {
+            NoteData data = new NoteData();
+            ObjectMapper jackson = new ObjectMapper();
 
-        data.setId(record.getId());
-        data.setTenant(TenantData.from(record.getTenantId()));
-        data.setNoteTypeData(NoteTypeData.from(record.getNotetypeId()));
-        data.setSecondaryDate(record.getSecondarydate().toLocalDateTime());
-        data.setNoteText(record.getNote());
-        data.setCreateDate(record.getCreateddate().toLocalDateTime());
-        data.setCreatedById(record.getCreatedby());
-        data.setLastModifiedDate(record.getLastmodifieddate().toLocalDateTime());
-        data.setSecondaryDateChangedById(record.getSecondarydatechangedbyId());
-        data.setSecondaryDateChangeDate(record.getSecondarydatechangedate().toLocalDateTime());
-        data.setDealIssues(jackson.convertValue(record.getDealissues(), ObjectNode.class));
-        data.setDiscussionPoints(jackson.convertValue(record.getDiscussionpoints(), ObjectNode.class));
+            data.setId(record.getId());
+            data.setTenant(TenantData.from(record.getTenantId()));
+            data.setNoteTypeData(NoteTypeData.from(record.getNotetypeId()));
+            data.setSecondaryDate(record.getSecondarydate().toLocalDateTime());
+            data.setNoteText(record.getNote());
+            data.setCreateDate(record.getCreateddate().toLocalDateTime());
+            data.setCreatedById(record.getCreatedby());
+            data.setLastModifiedDate(record.getLastmodifieddate().toLocalDateTime());
+            data.setSecondaryDateChangedById(record.getSecondarydatechangedbyId());
+            if (record.getSecondarydatechangedate() != null) {
+                data.setSecondaryDateChangeDate(record.getSecondarydatechangedate().toLocalDateTime());
+            }
+            data.setDealIssues(jackson.readTree(record.getDealissues()));
+            data.setDiscussionPoints(jackson.readTree(record.getDiscussionpoints()));
 
-        return data;
+            return data;
+        } catch (Exception e) {
+            return new NoteData();
+        }
+
     }
 }

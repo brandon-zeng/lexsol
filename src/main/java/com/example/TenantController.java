@@ -62,4 +62,13 @@ public class TenantController {
         return new ResponseEntity<>(noteService.addNote(tenantID, data).get(), HttpStatus.OK);
     }
 
+    @RequestMapping(value="/{tenantID}/notes/{noteID}", method = RequestMethod.GET)
+    public ResponseEntity<NoteData> getNote(@PathVariable int tenantID, @PathVariable int noteID) {
+        return new ResponseEntity<>(noteService.getNote(tenantID, noteID).get(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/{tenantID}/notes", method = RequestMethod.GET)
+    public Collection<NoteData> getNotes(@PathVariable int tenantID) {
+        return noteService.getNotes(tenantID);
+    }
 }

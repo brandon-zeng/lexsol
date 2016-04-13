@@ -2,6 +2,7 @@ package com.example.com.example.services;
 
 import com.example.NoteData;
 
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -9,4 +10,6 @@ import java.util.Optional;
  */
 public interface NoteService {
     Optional<NoteData> addNote(int tenantID, NoteData data);
+    Optional<NoteData> getNote(int tenantID, int noteID);
+    Collection<NoteData> getNotes(int tenantID);
 }
