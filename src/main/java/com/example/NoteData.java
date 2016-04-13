@@ -17,14 +17,6 @@ import java.time.LocalDateTime;
 public class NoteData {
     private int id;
 
-    public TenantData getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(TenantData tenant) {
-        this.tenant = tenant;
-    }
-
     public NoteTypeData getNoteTypeData() {
         return noteTypeData;
     }
@@ -129,7 +121,6 @@ public class NoteData {
         this.discussionPoints = discussionPoints;
     }
 
-    private TenantData tenant;
     private NoteTypeData noteTypeData;
     private int propertyId;
     private int siteVisitId;
@@ -158,7 +149,6 @@ public class NoteData {
             ObjectMapper jackson = new ObjectMapper();
 
             data.setId(record.getId());
-            data.setTenant(TenantData.from(record.getTenantId()));
             data.setNoteTypeData(NoteTypeData.from(record.getNotetypeId()));
             data.setSecondaryDate(record.getSecondarydate().toLocalDateTime());
             data.setNoteText(record.getNote());

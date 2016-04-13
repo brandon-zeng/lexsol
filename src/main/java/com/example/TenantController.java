@@ -71,4 +71,15 @@ public class TenantController {
     public Collection<NoteData> getNotes(@PathVariable int tenantID) {
         return noteService.getNotes(tenantID);
     }
+
+    @RequestMapping(value = "/{tenantID}/notes/{noteID}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteNote(@PathVariable int tenantID, @PathVariable int noteID) {
+        noteService.deleteNote(tenantID, noteID);
+    }
+
+    @RequestMapping(value = "/{tenantID}/notes/{noteID}", method = RequestMethod.PUT)
+    public ResponseEntity<NoteData> updateNote(@PathVariable int tenantID, @PathVariable int noteID, @RequestBody NoteData data) {
+        return new ResponseEntity<>(noteService.updateNote(tenantID, data).get(), HttpStatus.OK);
+    }
 }

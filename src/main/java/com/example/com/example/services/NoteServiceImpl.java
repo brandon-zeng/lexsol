@@ -35,4 +35,14 @@ public class NoteServiceImpl implements NoteService {
     public Collection<NoteData> getNotes(int tenantID) {
         return repository.getNotes(tenantID);
     }
+
+    @Override
+    public void deleteNote(int tenantID, int noteID) {
+        repository.deleteNote(tenantID, noteID);
+    }
+
+    @Override
+    public Optional<NoteData> updateNote(int tenantID, NoteData data) {
+        return repository.updateNote(tenantID, data);
+    }
 }

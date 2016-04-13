@@ -4,6 +4,7 @@ import com.example.model.tables.Note;
 import com.example.model.tables.Notetype;
 import com.example.model.tables.records.NoteRecord;
 import com.example.model.tables.records.NotetypeRecord;
+import org.apache.tomcat.jni.Local;
 import org.jooq.DSLContext;
 import org.jooq.Record1;
 import org.jooq.Result;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -114,4 +116,29 @@ public class NoteRepository {
         }
     }
 
+    public void deleteNote(int tenantID, int noteID) {
+        NoteRecord r = jooq.fetchOne(Note.NOTE, Note.NOTE.ID.eq(noteID));
+        r.delete();
+    }
+
+    public Optional<NoteData> updateNote(int tenantID, NoteData data) {
+        /*
+         *{"timestamp":"2016-04-13T16:08:33.285+0000",
+         * "status":500,"error":"Internal Server Error",
+         * "exception":"org.springframework.jdbc.BadSqlGrammarException","message":"jOOQ;
+         * bad SQL grammar [update \"public\".\"note\" set \"public\".\"note\".\"note\" = ?, \"public\".\"note\".\"lastmodifieddate\" = ? where \"public\".\"note\".\"id\" = ?]; nested exception is org.postgresql.util.PSQLException: ERROR: column \"public\" of relation \"note\" does not exist\n  Position: 28","path":"/api/tenants/1/notes/1"}
+         */
+//        NoteRecord r = jooq.fetchOne(Note.NOTE, Note.NOTE.ID.eq(data.getId()));
+//
+//        r.setNote(data.getNoteText());
+//        r.setLastmodifieddate(Timestamp.valueOf(LocalDateTime.now()));
+//        r.store();
+
+        jooq.update(Note.NOTE).set(Note.NOTE.LASTMODIFIEDDATE, Timestamp.valueOf(LocalDateTime.now()))
+                              .where(Note.NOTE.ID.equals(data.getId())).execute();
+
+        NoteRecord r = jooq.fetchOne(Note.NOTE, Note.NOTE.ID.eq(data.getId()));
+        r.refresh();
+        return Optional.of(NoteData.from(r));
+    }
 }
